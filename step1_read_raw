@@ -1,0 +1,45 @@
+import matplotlib
+import matplotlib.pyplot as plt
+x = []
+#可以更改以下打开文档路径
+with open(r'your\path.raw','r') as x_file:
+    #因为.raw文档内为多行文本，采用readlines方法进行读取
+    for line in x_file.readlines():
+        #去掉每行的前后空格，换行\n和制表\t
+        lines=line.strip()
+        #把每行当作字符串添加到x列表中
+        x.append(lines)
+    #把x列表复制给y
+    y=x[:]
+    #遍历x列表
+    for i in x:
+        #如果列表元素-字符串中有‘#’字字符
+        if i[0]=='#':
+            #删掉y列表中的带有#的元素
+            y.remove(i)
+            #将删掉#的列表y复制回x
+            x=y
+time=[]
+Voltage=[]
+for i in x:
+    #获取x列表元素内的空格索引
+    space_index=i.find(' ')
+    #把空格前的字符添加到横坐标time列表
+    time.append(i[:space_index])
+    #把空格后的字符添加到纵坐标voltage列表
+    Voltage.append(i[(space_index+1):])
+#找到voltage最后一个值为0的位置，再删掉前面所有的time/voltage值
+for i,element in enumerate(Voltage):
+    if element=='0':
+        index_of_last=i
+time[:index_of_last]=''
+Voltage[:index_of_last]=''
+# print (time)
+# print(Voltage)
+# 绘制voltage，time曲线
+plt.plot(time,Voltage,'r')
+# 设置x坐标轴名字为time
+plt.xlabel('time')
+# 设置y坐标轴名字为voltage
+plt.ylabel('Voltage')
+plt.show()
