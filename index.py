@@ -17,10 +17,12 @@ def get_date():
     return year, month, day
 date = get_date()
 
-if add == '8c:ec:4b:14:fe:e8' and date[0] < 2030:
+local_host_ip='please insert your ip here'
+
+if add ==local_host_ip  and date[0] < 2090:
     if __name__ == '__main__':
         Tj_doctor()
-elif add == '8c:ec:4b:14:fe:e8' and 2030 <= date[0] < 2031:
+elif add ==local_host_ip  and 2090 <= date[0] < 2091:
     #月份要求
     if date[1] < 3:
         if __name__=='__main__':
@@ -31,8 +33,8 @@ elif add == '8c:ec:4b:14:fe:e8' and 2030 <= date[0] < 2031:
             if __name__=='__main__':
                 Tj_doctor()
         else:
-            messagebox.showwarning('Tj Doctor', '对不起，软件已到期，请联系销售人员续费')
+            messagebox.showwarning('Tj Doctor', '对不起，软件已到期!')
     else:
-        messagebox.showwarning('Tj Doctor', '对不起，软件已到期，请联系销售人员续费')
+        messagebox.showwarning('Tj Doctor', '对不起，软件已到期!')
 else:
-    messagebox.showwarning('Tj Doctor', '你正在非法使用！请联系销售人员购买')
+    messagebox.showwarning('Tj Doctor', '请联系开发人员进行支援！')
